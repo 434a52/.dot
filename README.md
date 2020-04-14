@@ -1,2 +1,1 @@
-# dot-files
-linux config files
+# dot files
