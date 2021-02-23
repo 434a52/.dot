@@ -12,7 +12,7 @@ function install {
     fi
   fi
 }
-
+ 
 # Basics
 install apt  curl
 install apt  wget
