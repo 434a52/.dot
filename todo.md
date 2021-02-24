@@ -1,6 +1,7 @@
 - firacode
 - PS1
 - nvm / node
+- kill motd
 - roles
   - server
     - 

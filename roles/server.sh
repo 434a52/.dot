@@ -22,4 +22,6 @@ append_file /etc/ssh/sshd_config "#> CONFIGURATION <#"
 append_file /etc/ssh/sshd_config "Port 1001"
 append_file /etc/ssh/sshd_config "PermitRootLogin no"
 
-sudo systemctl restart ssh
+echo "Rebooting Machine ..."
+
+sudo reboot
