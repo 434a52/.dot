@@ -21,13 +21,13 @@ function link {
   elif [ -d "${target}" ]; then
     # echo "existing directory"
     if ! [ -f "${target}.bak" ]; then
-      mv ${target} "${target}.bak" 
+      mv ${target} "${target}.bak"
     fi
 
   fi
 
   mkdir --parents "${target_directory}"
-  ln --symbolic "${source}" "${target}"
+  ln -sfn "${source}" "${target}"
 }
 
 link .bashrc

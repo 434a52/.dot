@@ -20,11 +20,9 @@ install apt  wget
 install apt  git
 install apt  htop
 install apt  nmap
+install apt  net-tools
 install snap tree
 install apt  micro
-
-install figlet
-install lolcat
 
 sudo apt upgrade -y
 sudo apt autoremove -y

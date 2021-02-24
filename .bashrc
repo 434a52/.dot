@@ -1,25 +1,27 @@
-SYS_OS=`uname -a` # linux or mac
+SYSTEM_OS=`uname -a`
 SHORT_HOSTNAME=`hostname -s`
 
-# system aliases
-if [[ "$SYS_OS" == 'Linux' ]]; then
-  #PATH="..LINUX PATH..."
-  #source ~/dotfiles/aliases.lx
-else
-  #PATH="... MAC PATH..."
-  #source ~/dotfiles/aliases.mac
+# run os specific profile
+if [[ "${SYSTEM_OS}" == "Linux" ]]; then
+  if [ -f "${HOME}/.dotfiles/profile.linux" ]; then
+    source "${HOME}/.dotfiles/profile.linux"
+  fi
+elif [[ "${SYSTEM_OS}" == "Darwin" ]]; then
+  if [ -f "${HOME}/.dotfiles/profile.darwin" ]; then
+    source "${HOME}/.dotfiles/profile.darwin"
+  fi
 fi
 
 # run host specific profile
-if [[ -e ~/dotfiles/profile.$SHORT_HOSTNAME ]]; then
-  source ~/dotfiles/profile.$SHORT_HOSTNAME
+if [ -f "${HOME}/.dotfiles/profile.${SHORT_HOSTNAME}" ]; then
+  source "${HOME}/.dotfiles/profile.${SHORT_HOSTNAME}"
 fi
 
-alias ll='ls -vlAhg --group-directories-first'
+alias ll="ls -vlAhg"
 
 function reinit() {
   reset
-  exec sudo --login --user "$USER" /bin/sh -c "cd '$PWD'; exec '$SHELL' -l"
+  exec sudo --login --user "${USER}" /bin/sh -c "cd '${PWD}'; exec '${SHELL}' -l"
 }
 
 function apt_update() {
@@ -30,6 +32,6 @@ function apt_update() {
   if [ -f /var/run/reboot-required ] then
     cat /var/run/reboot-required
   else
-  	echo "Update Complete"
+    echo "System Updated"
   fi
 }
