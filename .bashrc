@@ -15,6 +15,8 @@ if [[ -e ~/dotfiles/profile.$SHORT_HOSTNAME ]]; then
   source ~/dotfiles/profile.$SHORT_HOSTNAME
 fi
 
+alias ll='ls -vlAhg --group-directories-first'
+
 function reinit() {
   reset
   exec sudo --login --user "$USER" /bin/sh -c "cd '$PWD'; exec '$SHELL' -l"
