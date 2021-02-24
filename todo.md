@@ -1,0 +1,13 @@
+- firacode
+- PS1
+- nvm / node
+- roles
+  - server
+    - 
+  - www
+    - nginx
+    - certbot
+  - app
+    - node
+  - db
+    - postgres

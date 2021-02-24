@@ -21,7 +21,6 @@ install apt  git
 install apt  htop
 install apt  nmap
 install apt  net-tools
-install snap tree
 install apt  micro
 
 sudo apt upgrade -y

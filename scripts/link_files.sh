@@ -2,7 +2,7 @@
 
 function link {
 
-  source="${HOME}/.dotfile/${1}"
+  source="${HOME}/.dotfiles/${1}"
   target="${HOME}/${1}"
   target_directory=$(dirname ${target})
 
@@ -26,8 +26,12 @@ function link {
 
   fi
 
-  mkdir --parents "${target_directory}"
+  mkdir -p "${target_directory}"
   ln -sfn "${source}" "${target}"
 }
 
 link .bashrc
+link .bash_exports
+link .bash_fns
+link .bash_aliases
+link .ssh/config

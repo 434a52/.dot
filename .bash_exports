@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export admin_user="ant0n"
+export admin_email="admin@434a52.io"
+export ssh_port=1001
