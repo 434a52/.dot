@@ -11,7 +11,6 @@ fi
 
 # os specific profile
 SYSTEM_OS=`uname -a`
-
 if [[ "${SYSTEM_OS}" == "Linux" ]]; then
   if [ -f "${HOME}/.profile.linux" ]; then
     source "${HOME}/.profile.linux"
@@ -28,7 +27,6 @@ source ~/.bash_aliases
 
 # host specific profile
 SHORT_HOSTNAME=`hostname -s`
-
 if [ -f "${HOME}/.profile.${SHORT_HOSTNAME}" ]; then
   source "${HOME}/.profile.${SHORT_HOSTNAME}"
 fi
