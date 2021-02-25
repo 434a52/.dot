@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
 
 sudo apt install -y ufw
 sudo ufw allow [ssh|${ssh_port}]
