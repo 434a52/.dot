@@ -1,4 +1,5 @@
 #!/bin/bash
+IFS=$'\n\t'
 
 function reload() {
   sudo systemctl reload $1
