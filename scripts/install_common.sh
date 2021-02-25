@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
 
 sudo apt update && sudo apt full-upgrade -y
 
@@ -23,5 +25,6 @@ install apt  nmap
 install apt  net-tools
 install apt  micro
 
+sudo apt update
 sudo apt upgrade -y
 sudo apt autoremove -y

@@ -1,9 +1,11 @@
 #!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
 
 sudo apt install -y fail2ban
 
 {
-  
+
   echo '[DEFAULT]'
   echo 'destemail = ${admin_email}'
   echo 'sendername = Fail2Ban'

@@ -6,7 +6,7 @@ function reload() {
 }
 
 function restart() {
-  sudo systemctl restart $2
+  sudo systemctl restart $1
   sudo systemctl status $1
 }
 
@@ -34,7 +34,7 @@ function apt_update() {
   sudo apt autoremove -y
 
   if [ -f /var/run/reboot-required ]; then
-    cat /var/run/reboot-required
+    echo "*** Reboot Required ***"
   else
     echo "*** System Updated ***"
   fi
