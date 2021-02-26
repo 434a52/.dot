@@ -1,42 +1,16 @@
 #!/bin/bash
-IFS=$'\n\t'
 
-function reload() {
-  sudo systemctl reload $1
-  sudo systemctl status $1
-}
-
-function restart() {
-  sudo systemctl restart $1
-  sudo systemctl status $1
-}
-
-function prepend_file() {
-  file=$1
-  text=$2
-  if ! [[ -f ${file} ]]; then
-    touch ${file}
-  fi
-  echo "$(echo "${text}"; cat ${file})" > ${file}
-}
-
-function append_file() {
-  file=$1
-  text=$2
-  if ! [[ -f ${file} ]]; then
-    touch ${file}
-  fi
-  echo "$(cat ${file}; echo "${text}")" > ${file}
+function mkcd() {
+  mkdir -p -- "$1" && cd -P -- "$1"
 }
 
 function apt_update() {
-  sudo apt update
-  sudo apt full-upgrade -y
-  sudo apt autoremove -y
-
-  if [ -f /var/run/reboot-required ]; then
-    echo "*** Reboot Required ***"
-  else
-    echo "*** System Updated ***"
+  if [[ sudo apt update && sudo apt full-upgrade -y ]]; then
+    sudo apt autoremove -y
+    if [ -f /var/run/reboot-required ]; then
+      echo "*** Reboot Required ***"
+    else
+      echo "*** System Updated ***"
+    fi
   fi
 }

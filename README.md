@@ -1,14 +1,11 @@
-# dot files
+# .dot-files
 
-### additional settings
-```
-extend sudo timeout
+`>_` `wget -O - https://raw.githubusercontent.com/434a52/bin/main/setup-server.sh | sudo bash -s`
 
-$ sudo visudo
-Defaults        env_reset,timestamp_timeout={minutes}
-```
+`>_` `wget -O - https://raw.githubusercontent.com/434a52/bin/main/setup-dotfiles.sh | sudo bash -s`
 
-### inspired by;
-- https://gitlab.com/dwt1/dotfiles
-- https://github.com/victoriadrake/dotfiles
-- https://github.com/tomnomnom/dotfiles
+`>_` `.dot-files/setup_role [dev|www|app|db]`
+
+<br/>
+
+[434a52/bin](https://github.com/434a52/bin)

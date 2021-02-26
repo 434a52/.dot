@@ -1,6 +1,5 @@
 #!/bin/bash
-set -euo pipefail
-IFS=$'\n\t'
+set -e
 
 curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
 

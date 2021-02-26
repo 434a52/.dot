@@ -5,28 +5,15 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 shopt -s histappend
 
-if [ -f "${HOME}/.secrets" ]; then
-  source "${HOME}/.secrets"
-fi
+export PS1="\[\e[0;35m\]\h \[\e[0;32m\]\w \[\e[0;37m\]> "
 
-# os specific profile
-SYSTEM_OS=$(uname -a)
-if [[ "${SYSTEM_OS}" == "Linux" ]]; then
-  if [ -f "${HOME}/.profile.linux" ]; then
-    source "${HOME}/.profile.linux"
-  fi
-elif [[ "${SYSTEM_OS}" == "Darwin" ]]; then
-  if [ -f "${HOME}/.profile.darwin" ]; then
-    source "${HOME}/.profile.darwin"
-  fi
-fi
-
-source ~/.bash_exports
 source ~/.bash_fns
 source ~/.bash_aliases
 
-# host specific profile
-SHORT_HOSTNAME=$(hostname -s)
-if [ -f "${HOME}/.profile.${SHORT_HOSTNAME}" ]; then
-  source "${HOME}/.profile.${SHORT_HOSTNAME}"
+if [ -e "${HOME}/.bash_user" ]; then
+  source "${HOME}/.bash_user"
+fi
+
+if [ -e "${HOME}/.bash_os" ]; then
+  source "${HOME}/.bash_os"
 fi
