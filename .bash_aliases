@@ -2,6 +2,8 @@
 
 alias ls='ls -lhgF --color=auto --group-directories-first'
 alias ll='ls -vlAhgF'
+alias lf='ls -pv | grep -v /'
+alias ld='\ls --color=auto -vld -- */'
 
 alias ..='cd ..'
 alias ...='cd ../../'
