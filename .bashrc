@@ -10,7 +10,7 @@ if [ -f /etc/bash_completion ]; then
   source /etc/bash_completion
 fi
 
-export PS1="\[\e[0;35m\]\h \[\e[0;32m\]\w \[\e[0;37m\]> "
+export PS1="\[\e[0;35m\]\h \[\e[0;32m\]\w \[\e[0;37m\] \$(git_branch) > "
 export PATH=${PATH}:${HOME}/bin
 
 # shellcheck source=/dev/null
