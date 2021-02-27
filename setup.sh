@@ -11,7 +11,7 @@ fi
 
 function link {
   source="${HOME}/.dotfiles/${1}"
-  if [[ @# -eq 1 ]]; then
+  if [[ $# -eq 1 ]]; then
     target="${HOME}/${1}"
   else
     target="${HOME}/${2}"
@@ -56,7 +56,6 @@ fi
 if ! [[ -e "${HOME}/.bash_host" ]]; then
   {
     echo "#!/bin/bash"
-    echo "set -euo pipefail"
     echo ""
     echo "export HOST_NAME=$(hostname -s)"
     echo "export SSH_PORT=22"
@@ -66,7 +65,6 @@ fi
 if ! [[ -e "${HOME}/.bash_user" ]]; then
   {
     echo "#!/bin/bash"
-    echo "set -euo pipefail"
     echo ""
     echo "export USER_NAME=${USER}"
     echo "export USER_EMAIL="
@@ -74,5 +72,6 @@ if ! [[ -e "${HOME}/.bash_user" ]]; then
 fi
 
 if ! [[ -e "${HOME}/.ssh/config" ]]; then
+  mkdir -p "${HOME}/.ssh/"
   touch "${HOME}/.ssh/config"
 fi
