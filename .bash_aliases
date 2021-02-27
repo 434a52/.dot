@@ -3,14 +3,14 @@
 alias ls='ls -lhgF --color=auto --group-directories-first'
 alias ll='ls -vlAhgF'
 alias lf='ls -pv | grep -v /'
-alias ld='\ls --color=auto -vld -- */'
+alias ld='\ls --color=auto -vhld -- */'
 
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .....='cd ../../../../'
 
-alias mkdir='mkdir -pv'
+alias md='mkdir -pv'
 alias cp='cp -rv'
 alias mv='mv -v'
 

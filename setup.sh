@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=1090
 set -euo pipefail
 
 if [[ "$*" =~ "--install-tools" ]]; then
@@ -75,3 +76,5 @@ if ! [[ -e "${HOME}/.ssh/config" ]]; then
   mkdir -p "${HOME}/.ssh/"
   touch "${HOME}/.ssh/config"
 fi
+
+source "${HOME}"/.bashrc

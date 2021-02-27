@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2034,1091,1090
 
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
@@ -23,24 +24,19 @@ light_cyan='\[\e[1;36m\]'
 white='\[\e[1;37m\]'
 
 if [ -f /etc/bash_completion ]; then
-  # shellcheck source=/dev/null
   source /etc/bash_completion
 fi
 
-# shellcheck source=/dev/null
 source "${HOME}/.bash_fns"
-# shellcheck source=/dev/null
 source "${HOME}/.bash_aliases"
 
 export PS1="${purple}\h ${green}\w ${blue}\$(git_branch)${none}> "
 export PATH=${PATH}:${HOME}/bin
 
 if [ -e "${HOME}/.bash_user" ]; then
-  # shellcheck source=/dev/null
   source "${HOME}/.bash_user"
 fi
 
 if [ -e "${HOME}/.bash_os" ]; then
-  # shellcheck source=/dev/null
   source "${HOME}/.bash_os"
 fi
