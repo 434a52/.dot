@@ -1,16 +1,17 @@
 #!/bin/bash
 
 function mkcd() {
-  mkdir -p -- "$1" && cd -P -- "$1"
+  mkdir -p -- "$1" && cd -P -- "$1" || exit
 }
 
 function apt_update() {
-  if [[ sudo apt update && sudo apt full-upgrade -y ]]; then
-    sudo apt autoremove -y
+  if sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y; then
     if [ -f /var/run/reboot-required ]; then
-      echo "*** Reboot Required ***"
+      echo -e "\e[33m*** Reboot Required ***\e[0m"
     else
-      echo "*** System Updated ***"
+      echo -e "\e[34m*** System Updated ***\e[0m"
     fi
+  else
+    echo -e "\e[31m*** System Update Failed ***\e[0m"
   fi
 }
