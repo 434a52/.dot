@@ -11,25 +11,25 @@ fi
 
 function link {
   source="${HOME}/.dotfiles/${1}"
-  if [ "@#" -eq 1 ]; then
+  if [[ @# -eq 1 ]]; then
     target="${HOME}/${1}"
   else
     target="${HOME}/${2}"
   fi
-  target_directory=$(dirname ${target})
+  target_directory=$(dirname "${target}")
   # echo "${source} >> ${target}"
   if [ -h "${target}" ]; then
     # echo "existing symlink"
-    rm ${target}
+    rm "${target}"
   elif [ -f "${target}" ]; then
     # echo "existing file"
     if ! [ -f "${target}.bak" ]; then
-      mv ${target} "${target}.bak"
+      mv "${target}" "${target}.bak"
     fi
   elif [ -d "${target}" ]; then
     # echo "existing directory"
     if ! [ -f "${target}.bak" ]; then
-      mv ${target} "${target}.bak"
+      mv "${target}" "${target}.bak"
     fi
   fi
   mkdir -p "${target_directory}"
@@ -58,8 +58,8 @@ if ! [[ -e "${HOME}/.bash_host" ]]; then
     echo "#!/bin/bash"
     echo "set -euo pipefail"
     echo ""
-    echo "export host_name=$(hostname -s)"
-    echo "export ssh_port=22"
+    echo "export HOST_NAME=$(hostname -s)"
+    echo "export SSH_PORT=22"
   } > "${HOME}/.bash_host"
 fi
 
@@ -68,8 +68,8 @@ if ! [[ -e "${HOME}/.bash_user" ]]; then
     echo "#!/bin/bash"
     echo "set -euo pipefail"
     echo ""
-    echo "export user_name="
-    echo "export user_email="
+    echo "export USER_NAME=${USER}"
+    echo "export USER_EMAIL="
   } > "${HOME}/.bash_user"
 fi
 
