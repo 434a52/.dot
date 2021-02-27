@@ -1,4 +1,13 @@
 #!/bin/bash
+# shellcheck disable=1090
+
+function shr() {
+  source "${HOME}/.bashrc"
+}
+
+function cdl() {
+  cd "${1}" && ll "${PWD}" 
+}
 
 function mkcd() {
   mkdir -p -- "$1" && cd -P -- "$1" || exit
