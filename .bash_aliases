@@ -1,14 +1,16 @@
 #!/bin/bash
 
-alias ls='ls -lhg --color=auto --group-directories-first'
-alias ll='ls -vlAhg'
+alias ls='ls -lhgF --color=auto --group-directories-first'
+alias ll='ls -vlAhgF'
 
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .....='cd ../../../../'
 
-alias mkdir='mkdir -p'
+alias mkdir='mkdir -pv'
+alias cp='cp -rv'
+alias mv='mv -v'
 
 alias cls='clear'
 
