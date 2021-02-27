@@ -32,7 +32,7 @@ source "${HOME}/.bash_fns"
 # shellcheck source=/dev/null
 source "${HOME}/.bash_aliases"
 
-export PS1="${yellow}\h ${green}\w ${blue}\$(git_branch)${none}> "
+export PS1="${purple}\h ${green}\w ${blue}\$(git_branch)${none}> "
 export PATH=${PATH}:${HOME}/bin
 
 if [ -e "${HOME}/.bash_user" ]; then
