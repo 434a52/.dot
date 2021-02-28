@@ -5,6 +5,14 @@ function shr() {
   source "${HOME}/.bashrc"
 }
 
+function set_title() {
+  if [ -z "$PS1_BACK" ]; then
+    PS1_BACK="$PS1"
+  fi
+  TITLE="\[\e]0;$*\a\]"
+  PS1="${PS1_BACK}${TITLE}"
+}
+
 function cdl() {
   cd "${1}" && ll "${PWD}" 
 }

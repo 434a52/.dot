@@ -33,6 +33,8 @@ source "${HOME}/.bash_aliases"
 export PS1="${purple}\h ${green}\w ${blue}\$(git_branch)${none}> "
 export PATH=${PATH}:${HOME}/bin
 
+set_title "\h"
+
 if [ -e "${HOME}/.bash_os" ]; then
   source "${HOME}/.bash_os"
 fi
