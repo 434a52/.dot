@@ -10,6 +10,14 @@ if ! [[ -d "${HOME}/bin" ]]; then
   mkdir "${HOME}/bin"
 fi
 
+if ! [[ -d "${HOME}/code" ]]; then
+  mkdir "${HOME}/code"
+fi
+
+if ! [[ -e "${HOME}/code/repo-list" ]]; then
+  touch "${HOME}/code/repo-list"
+fi
+
 function link {
   source="${HOME}/.dotfiles/${1}"
   if [[ $# -eq 1 ]]; then
