@@ -1,4 +1,4 @@
-# 434a52/.dotfiles
+# 434a52/.dot
 
 `wget -O - https://raw.githubusercontent.com/434a52/bin/main/setup-server.sh | sudo bash -s`
 

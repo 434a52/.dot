@@ -3,7 +3,7 @@
 set -euo pipefail
 
 if [[ "$*" =~ "--install-tools" ]]; then
-  "${HOME}"/.dotfiles/install/tools.sh
+  "${HOME}"/.dot/install/tools.sh
 fi
 
 if ! [[ -d "${HOME}/bin" ]]; then
@@ -19,7 +19,7 @@ if ! [[ -e "${HOME}/code/repo-list" ]]; then
 fi
 
 function link {
-  source="${HOME}/.dotfiles/${1}"
+  source="${HOME}/.dot/${1}"
   if [[ $# -eq 1 ]]; then
     target="${HOME}/${1}"
   else
