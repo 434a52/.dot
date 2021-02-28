@@ -13,8 +13,20 @@ function mkcd() {
   mkdir -p -- "$1" && cd -P -- "$1" || exit
 }
 
-function clone_repos() {
-  xargs -n1 git clone < "${HOME}/code/repo-list"
+function clone_all() {
+  repo_list="${HOME}/code/repo-list"
+  while read -r repo; do 
+    echo "${repo}"
+  done < "${repo_list}"
+}
+
+function pull_all() {
+  for repo in */.git; do 
+    echo "${repo}"
+    cd "${repo}/.." || return
+    git pull --ff-only
+    cd ..
+  done
 }
 
 function apt_update() {

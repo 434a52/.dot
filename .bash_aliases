@@ -1,5 +1,7 @@
 #!/bin/bash
 
+alias mi='micro'
+
 alias ls='ls -lhgF --color=auto --group-directories-first'
 alias ll='ls -vlAhgF'
 alias lf='ls -pv | grep -v /'
@@ -25,13 +27,9 @@ alias df='df -H --total'
 
 alias ports='netstat -tulanp'
 
-alias ipt='sudo /sbin/iptables'
-alias iptlist='sudo /sbin/iptables -L -n -v --line-numbers'
-alias iptlistin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
-alias iptlistout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
-alias iptlistfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
+alias follow='tail -fn +1'
 
-alias meminfo='free -m -l -t'
+alias meminfo='free -mlt'
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'

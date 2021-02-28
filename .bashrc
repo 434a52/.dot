@@ -33,10 +33,10 @@ source "${HOME}/.bash_aliases"
 export PS1="${purple}\h ${green}\w ${blue}\$(git_branch)${none}> "
 export PATH=${PATH}:${HOME}/bin
 
-if [ -e "${HOME}/.bash_user" ]; then
-  source "${HOME}/.bash_user"
-fi
-
 if [ -e "${HOME}/.bash_os" ]; then
   source "${HOME}/.bash_os"
+fi
+
+if [ -e "${HOME}/.bash_user" ]; then
+  source "${HOME}/.bash_user"
 fi
