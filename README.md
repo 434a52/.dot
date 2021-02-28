@@ -1,10 +1,10 @@
-# 434a52/.dot
+# dotfiles
 
 `wget -O - https://raw.githubusercontent.com/434a52/bin/main/setup-server.sh | sudo bash -s`
 
 `wget -O - https://raw.githubusercontent.com/434a52/bin/main/setup-dotfiles.sh | sudo bash -s`
 
-`.dot-files/setup_role [dev|www|app|db]`
+`.dot/setup_role [dev|www|app|db]`
 
 <br/>
 
