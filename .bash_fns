@@ -1,8 +1,32 @@
 #!/bin/bash
 # shellcheck disable=1090
 
-function shr() {
+function dot_reset() {
   source "${HOME}/.bashrc"
+}
+
+function go() {
+  declare -A dir_list
+  while IFS="=" read -r key value; do
+    dir_list[$key]=$value
+  done < "${HOME}/.dir_list"
+
+  if [ "$#" -eq 0 ]; then
+    cat "${HOME}/.dir_list"
+  elif [ "$#" -eq 1 ]; then
+    if [[ -v dir_list[$1] ]]; then
+      cd "${dir_list[$1]}"
+    fi
+  else
+    if [ -z "$2" ]; then
+      unset "dir_list[$1]"
+    else
+      dir_list[$1]=$2
+    fi
+    for key in "${!dir_list[@]}"; do
+      echo "${key}=${dir_list[$key]}"
+    done > "${HOME}/.dir_list"
+  fi
 }
 
 function set_title() {
@@ -35,6 +59,13 @@ function pull_all() {
     git pull --ff-only
     cd ..
   done
+}
+
+function dot_pull() {
+  set -e
+  cd "${HOME}/.dot"
+  git pull --ff-only
+  source "${HOME}/.bashrc"
 }
 
 function apt_update() {

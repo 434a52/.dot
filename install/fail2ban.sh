@@ -17,6 +17,6 @@ sudo apt install -y fail2ban
   echo "enabled = true"
   echo "port = ${SSH_PORT}"
 
-} >> /etc/fail2ban/jail.local
+} > /etc/fail2ban/jail.local
 
 sudo systemctl restart fail2ban

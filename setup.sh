@@ -18,6 +18,14 @@ if ! [[ -e "${HOME}/code/repo-list" ]]; then
   touch "${HOME}/code/repo-list"
 fi
 
+if ! [[ -e "${HOME}/.dir_list" ]]; then
+  {
+    echo "home=${HOME}"
+    echo "dot=${HOME}/.dot"
+    echo "code=${HOME}/code"
+  } > "${HOME}/.dir_list"
+fi
+
 function link {
   source="${HOME}/.dot/${1}"
   if [[ $# -eq 1 ]]; then
@@ -85,4 +93,4 @@ if ! [[ -e "${HOME}/.ssh/config" ]]; then
   touch "${HOME}/.ssh/config"
 fi
 
-source "${HOME}"/.bashrc
+source "${HOME}/.bashrc"

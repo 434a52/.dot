@@ -2,6 +2,8 @@
 
 alias mi='micro'
 
+alias code='cd ~/code/ && ll'
+
 alias ls='ls -lhgF --color=auto --group-directories-first'
 alias ll='ls -vlAhgF'
 alias lf='ls -pv | grep -v /'
