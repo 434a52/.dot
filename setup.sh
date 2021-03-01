@@ -62,30 +62,15 @@ for file in bin/*.sh; do
   link "${file}"
 done
 
-# os specific profile
-SYSTEM_OS=$(uname -a)
-if [[ "${SYSTEM_OS}" == "Linux" ]]; then
-  link "profile/linux" ".bash_os"
-elif [[ "${SYSTEM_OS}" == "Darwin" ]]; then
-  link "profile/macos" ".bash_os"
-fi
-
-if ! [[ -e "${HOME}/.bash_host" ]]; then
+if ! [[ -e "${HOME}/.bash_local" ]]; then
   {
     echo "#!/bin/bash"
     echo ""
     echo "export HOST_NAME=$(hostname -s)"
-    echo "export SSH_PORT=22"
-  } > "${HOME}/.bash_host"
-fi
-
-if ! [[ -e "${HOME}/.bash_user" ]]; then
-  {
-    echo "#!/bin/bash"
-    echo ""
     echo "export USER_NAME=${USER}"
     echo "export USER_EMAIL="
-  } > "${HOME}/.bash_user"
+    echo "export SSH_PORT=22"
+  } > "${HOME}/.bash_local"
 fi
 
 if ! [[ -e "${HOME}/.ssh/config" ]]; then
