@@ -11,7 +11,6 @@ alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .....='cd ../../../../'
-alias /='cd /'
 alias ~='cd ~'
 
 alias md='mkdir -pv'
