@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
 
-sudo apt install -y git
+if [ "${OS_NAME}" == "UBUNTU" ]; then
+  sudo apt install -y git
+fi
 
 user_name_default=${USER_NAME}
 read -rp "git user.name [${user_name_default}]: " git_user_name

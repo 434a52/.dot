@@ -36,12 +36,13 @@ if [ "${proceed}" == "Y" ]; then
   } >> /etc/ssh/sshd_config
 
   {
-    echo "export OS=UBUNTU_SERVER"
+    echo "export OS_NAME=UBUNTU"
+    echo "export OS_TYPE=SERVER"
     echo "export HOST_NAME=${host_name}"
     echo "export USER_NAME=${user_name}"
     echo "export USER_EMAIL=${user_email}"
     echo "export SSH_PORT=${ssh_port}"
-  } > "/home/${user_name}/.bash_local"
+  } > "/home/${user_name}/.dot.conf"
 
   git clone https://github.com/434a52/.dot.git "/home/${user_name}/.dot"
 
