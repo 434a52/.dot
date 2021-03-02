@@ -72,7 +72,7 @@ if [ -e "${HOME}/.dotrc" ]; then
       echo "source ${HOME}/.dotrc"
       echo "source ${DOT}/lib/aliases"
       echo "source ${DOT}/lib/functions"
-      echo "source ${DOT}/lib/theme"
+      #echo "source ${DOT}/lib/theme"
       echo "#>"
     } >> "${HOME}/.zshrc"
   fi
