@@ -27,18 +27,11 @@ if [ -f /etc/bash_completion ]; then
   source /etc/bash_completion
 fi
 
-source "${HOME}/.bash_fns"
-source "${HOME}/.bash_aliases"
+source "${HOME}/.dotrc"
+source "${HOME}/.dot/functions"
+source "${HOME}/.dot/aliases"
 
 export PS1="${purple}\h ${green}\w ${blue}\$(git_branch)${none}> "
 export PATH=${PATH}:${HOME}/bin
 
 set_title "\h  \w"
-
-if [ -e "${HOME}/.bash_os" ]; then
-  source "${HOME}/.bash_os"
-fi
-
-if [ -e "${HOME}/.bash_user" ]; then
-  source "${HOME}/.bash_user"
-fi

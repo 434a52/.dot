@@ -35,18 +35,24 @@ if [ "${proceed}" == "Y" ]; then
     echo "#>"
   } >> /etc/ssh/sshd_config
 
+  export DOT="/home/${user_name}/.dot"
+
   {
+    echo "#!/bin/bash"
+    echo "set -e"
+    echo ""
+    echo "export DOT=${DOT}"
     echo "export OS_NAME=UBUNTU"
     echo "export OS_TYPE=SERVER"
     echo "export HOST_NAME=${host_name}"
     echo "export USER_NAME=${user_name}"
     echo "export USER_EMAIL=${user_email}"
     echo "export SSH_PORT=${ssh_port}"
-  } > "/home/${user_name}/.dot.conf"
+  } > "/home/${user_name}/.dotrc"
 
-  git clone https://github.com/434a52/.dot.git "/home/${user_name}/.dot"
+  git clone https://github.com/434a52/.dot.git "${DOT}"
 
-  /bin/su -c "/home/${user_name}/.dot/setup.sh --install-tools" - "${user_name}"
+  /bin/su -c "${DOT}/setup.sh --install-tools" - "${user_name}"
 
   echo "*** Rebooting Machine ***"
 

@@ -2,18 +2,18 @@
 
 alias mi='micro'
 
-alias code='cd ~/code/ && ll'
-
 alias ls='ls -lhgF --color=auto --group-directories-first'
 alias ll='ls -vlAhgF'
 alias lf='ls -pv | grep -v /'
 alias ld='\ls --color=auto -vhld -- */'
 
-alias ..='cd ..'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
-alias ~='cd ~'
+if [ -n "${BASH}" ]; then
+  alias ..='cd ..'
+  alias ...='cd ../../'
+  alias ....='cd ../../../'
+  alias .....='cd ../../../../'
+  alias ~='cd ~'
+fi
 
 alias md='mkdir -pv'
 alias cp='cp -rv'
@@ -39,9 +39,10 @@ alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias cpuinfo='lscpu'
 
-alias sysd='sudo systemctl'
-alias reload='sudo systemctl reload'
-alias restart='sudo systemctl restart'
-alias status='sudo systemctl status'
-
-alias reboot='sudo reboot'
+if [ "${OS_NAME}" == "UBUNTU" ]; then
+  alias sysd='sudo systemctl'
+  alias reload='sudo systemctl reload'
+  alias restart='sudo systemctl restart'
+  alias status='sudo systemctl status'
+  alias reboot='sudo reboot'
+fi

@@ -1,18 +1,25 @@
 #!/bin/bash
 # shellcheck disable=1090
 
+function dot_reload() {
+  set -e
+  cd "${HOME}/.dot"
+  git pull --ff-only
+  dot_reset
+}
+
 function dot_reset() {
   source "${HOME}/.bashrc"
 }
 
-function go() {
+function sd() {
   declare -A dir_list
   while IFS="=" read -r key value; do
     dir_list[$key]=$value
-  done < "${HOME}/.dir_list"
+  done < "${HOME}/.dot_dirs"
 
   if [ "$#" -eq 0 ]; then
-    cat "${HOME}/.dir_list"
+    cat "${HOME}/.dot_dirs"
   elif [ "$#" -eq 1 ]; then
     if [[ -v dir_list[$1] ]]; then
       cd "${dir_list[$1]}"
@@ -25,16 +32,8 @@ function go() {
     fi
     for key in "${!dir_list[@]}"; do
       echo "${key}=${dir_list[$key]}"
-    done > "${HOME}/.dir_list"
+    done > "${HOME}/.dot_dirs"
   fi
-}
-
-function set_title() {
-  if [ -z "$PS1_BACK" ]; then
-    PS1_BACK="$PS1"
-  fi
-  TITLE="\[\e]0;$*\a\]"
-  PS1="${PS1_BACK}${TITLE}"
 }
 
 function cdl() {
@@ -61,13 +60,6 @@ function pull_all() {
   done
 }
 
-function dot_pull() {
-  set -e
-  cd "${HOME}/.dot"
-  git pull --ff-only
-  source "${HOME}/.bashrc"
-}
-
 function apt_update() {
   if sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y; then
     if [ -f /var/run/reboot-required ]; then
@@ -78,6 +70,14 @@ function apt_update() {
   else
     echo -e "\e[31m*** System Update Failed ***\e[0m"
   fi
+}
+
+function set_title() {
+  if [ -z "$PS1_BACK" ]; then
+    PS1_BACK="$PS1"
+  fi
+  TITLE="\[\e]0;$*\a\]"
+  PS1="${PS1_BACK}${TITLE}"
 }
 
 function git_branch() { 

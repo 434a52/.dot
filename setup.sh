@@ -2,14 +2,12 @@
 # shellcheck disable=1090
 set -euo pipefail
 
-if [ -e "${HOME}/.dot.conf" ]; then
+if [ -e "${HOME}/.dotrc" ]; then
 
-  source "${HOME}/.dot.conf"
+  source "${HOME}/.dotrc"
 
-  if [ "${OS_NAME}" == "UBUNTU" ]; then
-    if [[ "$*" =~ "--install-tools" ]]; then
-      "${HOME}/.dot/install/tools.sh"
-    fi
+  if [[ "$*" =~ "--install-tools" ]]; then
+    "${HOME}/.dot/install/tools.sh"
   fi
 
   if ! [[ -d "${HOME}/bin" ]]; then
@@ -66,11 +64,19 @@ if [ -e "${HOME}/.dot.conf" ]; then
 
   if [ "${OS_NAME}" == "UBUNTU" ]; then
     link .bashrc
-    link .bash_fns
-    link .bash_aliases
     source "${HOME}/.bashrc"
+  elif [ "${OS_NAME}" == "MAC" ]; then
+    {
+      echo ""
+      echo "#>"
+      echo source "${HOME}/.dotrc"
+      echo source "${DOT}/aliases"
+      echo source "${DOT}/functions"
+      echo "#>"
+    } >> "${HOME}/.zshrc"
   fi
 
+  cd "${DOT}"
   for file in bin/*.sh; do
     [ -e "${file}" ] || continue
     link "${file}"
