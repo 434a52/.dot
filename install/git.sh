@@ -20,3 +20,5 @@ git config --global init.defaultBranch main
 git config --global credential.helper cache
 # set the cache to 90 minutes
 git config --global credential.helper "cache --timeout=5400"
+
+git config --list
