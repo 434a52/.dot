@@ -69,7 +69,8 @@ if [ -e "${HOME}/.dotrc" ]; then
     {
       echo ""
       echo "#>"
-      echo "source ~/.dot/lib/.zshrc"
+      echo source "${HOME}/.dotrc"
+      echo source "${DOT}/lib/zshrc"
       echo "#>"
     } >> "${HOME}/.zshrc"
   fi

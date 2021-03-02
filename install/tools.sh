@@ -16,6 +16,10 @@ if [ "${OS_NAME}" == "UBUNTU" ]; then
   apt_install tmux
   apt_install micro
 elif [ "${OS_NAME}" == "MAC" ]; then
+  where=$(which brew)
+  if [ -z "$where" ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
   if ! [ -e "${HOME}/bin/micro" ]; then
     ( cd "${HOME}"/bin && curl https://getmic.ro | zsh )
   fi
