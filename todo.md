@@ -1,2 +1,0 @@
-- firacode
-- kill motd
