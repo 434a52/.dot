@@ -7,7 +7,7 @@ read -rp "user.email: " user_email
 read -rp "ssh port: " ssh_port
 read -rp "Press Y to proceed" proceed
 
-if [ "${proceed}" == "Y" ]; then
+if [ "${proceed}" = "Y" ]; then
 
   timedatectl set-timezone 'UTC'
 

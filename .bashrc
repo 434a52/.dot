@@ -12,7 +12,7 @@ fi
 
 export PATH=${PATH}:${HOME}/bin
 
-source "${HOME}/.dotrc"
-source "${DOT}/lib/functions"
-source "${DOT}/lib/aliases"
-source "${DOT}/lib/theme"
+source "${HOME}"/.dotrc
+source "${DOT}"/lib/functions
+source "${DOT}"/lib/aliases
+source "${DOT}"/lib/theme
