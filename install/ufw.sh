@@ -1,10 +1,13 @@
 #!/bin/bash
 set -e
 
-sudo apt install -y ufw
-sudo ufw allow "${SSH_PORT}"
-sudo ufw allow http/tcp
-sudo ufw allow https
-sudo ufw enable
+if [ -z "$(which ufw)" ]; then
 
-sudo ufw status
+  sudo apt install -y ufw
+  sudo ufw allow "${SSH_PORT}"
+  sudo ufw allow http/tcp
+  sudo ufw allow https
+  sudo ufw enable
+  #sudo ufw status
+
+fi

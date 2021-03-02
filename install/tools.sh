@@ -1,15 +1,20 @@
 #!/bin/bash
-set -e
+#set -e
+
+function apt_install() {
+  where=$(which "${1}")
+  if [ -z "${where}" ]; then
+    sudo apt install -y "${1}"
+  fi
+}
 
 if [ "${OS_NAME}" == "UBUNTU" ]; then
-  sudo apt install -y curl
-  sudo apt install -y wget
-  sudo apt install -y htop
-  sudo apt install -y nmap
-  sudo apt install -y net-tools
-  sudo apt install -y tmux
-  sudo apt install -y micro
+  apt_install curl
+  apt_install wget
+  apt_install htop
+  apt_install nmap
+  apt_install tmux
+  apt_install micro
 elif [ "${OS_NAME}" == "MAC" ]; then
-  echo
-  # cd ${HOME}/bin && curl https://getmic.ro | zsh
+  cd "${HOME}"/bin && curl https://getmic.ro | zsh
 fi

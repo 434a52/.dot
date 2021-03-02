@@ -1,6 +1,6 @@
 #!/bin/bash
 # shellcheck disable=1090
-set -euo pipefail
+#set -euo pipefail
 
 if [ -e "${HOME}/.dotrc" ]; then
 
@@ -77,7 +77,6 @@ if [ -e "${HOME}/.dotrc" ]; then
     } >> "${HOME}/.zshrc"
   fi
 
-  cd "${DOT}"
   for file in bin/*.sh; do
     [ -e "${file}" ] || continue
     link "${file}"

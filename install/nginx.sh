@@ -1,10 +1,14 @@
 #!/bin/bash
 set -e
 
-sudo apt install -y curl gnupg2 ca-certificates lsb-release
-echo "deb http://nginx.org/packages/ubuntu $(lsb_release -cs) nginx" | sudo tee /etc/apt/sources.list.d/nginx.list
+if [ -z "$(which nginx)" ]; then
 
-curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add -
+  sudo apt install -y curl gnupg2 ca-certificates lsb-release
+  echo "deb http://nginx.org/packages/ubuntu $(lsb_release -cs) nginx" | sudo tee /etc/apt/sources.list.d/nginx.list
 
-sudo apt update
-sudo apt install -y nginx
+  curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add -
+
+  sudo apt update
+  sudo apt install -y nginx
+
+fi
