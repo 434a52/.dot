@@ -2,17 +2,19 @@
 
 alias mi='micro'
 
-alias ls='ls -lhgF --color=auto --group-directories-first'
-alias ll='ls -vlAhgF'
-alias lf='ls -pv | grep -v /'
-alias ld='\ls --color=auto -vhld -- */'
-
 if [ -n "${BASH}" ]; then
+
+  alias ls='ls -lhgF --color=auto --group-directories-first'
+  alias ll='ls -vlAhgF'
+  alias lf='ls -pv | grep -v /'
+  alias ld='\ls --color=auto -vhld -- */'
+
   alias ..='cd ..'
   alias ...='cd ../../'
   alias ....='cd ../../../'
   alias .....='cd ../../../../'
   alias ~='cd ~'
+  
 fi
 
 alias md='mkdir -pv'

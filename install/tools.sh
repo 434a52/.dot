@@ -16,5 +16,7 @@ if [ "${OS_NAME}" == "UBUNTU" ]; then
   apt_install tmux
   apt_install micro
 elif [ "${OS_NAME}" == "MAC" ]; then
-  cd "${HOME}"/bin && curl https://getmic.ro | zsh
+  if ! [ -e "${HOME}/bin/micro" ]; then
+    ( cd "${HOME}"/bin && curl https://getmic.ro | zsh )
+  fi
 fi

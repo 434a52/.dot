@@ -10,6 +10,8 @@ if [ -f /etc/bash_completion ]; then
   source /etc/bash_completion
 fi
 
+export PATH=${PATH}:${HOME}/bin
+
 source "${HOME}/.dotrc"
 source "${DOT}/lib/functions"
 source "${DOT}/lib/aliases"
