@@ -22,12 +22,12 @@ if [ -e "${HOME}/.dotrc" ]; then
     touch "${HOME}/code/repo-list"
   fi
 
-  if ! [[ -e "${HOME}/.dir_list" ]]; then
+  if ! [[ -e "${HOME}/.dot_dirs" ]]; then
     {
       echo "home=${HOME}"
       echo "dot=${HOME}/.dot"
       echo "code=${HOME}/code"
-    } > "${HOME}/.dir_list"
+    } > "${HOME}/.dot_dirs"
   fi
 
   if ! [[ -e "${HOME}/.ssh/config" ]]; then
@@ -69,9 +69,10 @@ if [ -e "${HOME}/.dotrc" ]; then
     {
       echo ""
       echo "#>"
-      echo source "${HOME}/.dotrc"
-      echo source "${DOT}/aliases"
-      echo source "${DOT}/functions"
+      echo "source ${HOME}/.dotrc"
+      echo "source ${DOT}/lib/aliases"
+      echo "source ${DOT}/lib/functions"
+      echo "source ${DOT}/lib/theme"
       echo "#>"
     } >> "${HOME}/.zshrc"
   fi
