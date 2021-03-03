@@ -6,9 +6,9 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 shopt -s histappend
 
-if [ -f /etc/bash_completion ]; then
-  source /etc/bash_completion
-fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=${PATH}:${HOME}/bin
 
