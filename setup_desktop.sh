@@ -1,11 +1,10 @@
 #!/bin/bash
-set -e
 
-./dotrc.sh --os_name=UBUNTU --os_type=DESKTOP
+DOT="${HOME}"/.dot
 
 if ! [[ -d "${DOT}" ]]; then
-  "${DOT}"/install/git.sh
   git clone https://github.com/434a52/.dot.git "${DOT}"
 fi
 
+"${DOT}"/dotrc.sh --os_name=UBUNTU --os_type=DESKTOP
 "${DOT}"/setup.sh --install-tools
