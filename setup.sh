@@ -56,16 +56,16 @@ function link {
   ln -sfn "${source}" "${target}"
 }
 
-if [ "${OS_NAME}" == "UBUNTU" ]; then
+if [ "${OS_NAME}" = "UBUNTU" ]; then
   if [[ "$*" =~ "--install-tools" ]]; then
     "${HOME}/.dot/install/ubuntu_tools.sh"
   fi
   link .bashrc
-  source "${HOME}/.bashrc"
+  source "${HOME}"/.bashrc
   
-elif [ "${OS_NAME}" == "MAC" ]; then
+elif [ "${OS_NAME}" = "MAC" ]; then
   if [[ "$*" =~ "--install-tools" ]]; then
-    "${HOME}/.dot/install/mac_tools.sh"
+    "${HOME}"/.dot/install/mac_tools.sh
   fi
   touch "${HOME}"/.hushlogin
   ln -s "${DOT}"/lib/dot.zsh-theme "${ZSH}"/themes
@@ -77,7 +77,7 @@ elif [ "${OS_NAME}" == "MAC" ]; then
   } >> "${HOME}"/.zshrc
 fi
 
-for file in bin/*.sh; do
-  [ -e "${file}" ] || continue
-  link "${file}"
-done
+# for file in bin/*.sh; do
+#   [ -e "${file}" ] || continue
+#   link "${file}"
+# done
