@@ -2,9 +2,7 @@
 # shellcheck disable=1090
 
 function dot_reload() {
-  set -e
-  cd "${HOME}/.dot"
-  git pull --ff-only
+  (cd "${DOT}" && git pull --ff-only)
   dot_reset
 }
 
@@ -30,14 +28,20 @@ function sd() {
     else
       dir_list[$1]=$2
     fi
-    for key in "${!dir_list[@]}"; do
-      echo "${key}=${dir_list[$key]}"
-    done > "${HOME}/.dot_dirs"
+    if [ -n "${BASH}" ]; then
+      for key in "${!dir_list[@]}"; do
+        echo "${key}=${dir_list[$key]}"
+      done > "${HOME}/.dot_dirs"
+    elif [ -n "${ZSH}" ]; then
+      for key value in ${(kv)dir_list}; do
+        echo "${key}=${value}"
+      done > "${HOME}/.dot_dirs"
+    fi
   fi
 }
 
 function cdl() {
-  cd "${1}" && ll "${PWD}" 
+  cd "${1}" && ll "${PWD}"
 }
 
 function mkcd() {
@@ -46,17 +50,15 @@ function mkcd() {
 
 function clone_all() {
   repo_list="${HOME}/code/repo-list"
-  while read -r repo; do 
+  while read -r repo; do
     echo "${repo}"
   done < "${repo_list}"
 }
 
 function pull_all() {
-  for repo in */.git; do 
+  for repo in */.git; do
     echo "${repo}"
-    cd "${repo}/.." || return
-    git pull --ff-only
-    cd ..
+    (cd "${repo}/.." && git pull --ff-only)
   done
 }
 
@@ -80,6 +82,6 @@ function set_title() {
   PS1="${PS1_BACK}${TITLE}"
 }
 
-function git_branch() { 
+function git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1] /'
 }
