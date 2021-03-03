@@ -1,41 +1,10 @@
 #!/bin/bash
-# shellcheck disable=1090
-# /etc/default/motd-news :: ENABLED=0
-set -e
 
-read -rp "USER_NAME: " USER_NAME
+./dotrc.sh --os_name=UBUNTU --os_type=SERVER
 
-adduser "${USER_NAME}"
-usermod -a -G sudo "${USER_NAME}"
-sudo passwd "${USER_NAME}"
+if ! [[ -d "${DOT}" ]]; then
+  "${DOT}"/install/git.sh
+  git clone https://github.com/434a52/.dot.git "${DOT}"
+fi
 
-./dotrc.sh --user_name="${USER_NAME}" --os_name=UBUNTU --os_type=SERVER
-
-timedatectl set-timezone 'UTC'
-
-echo "${HOST_NAME}" > /etc/hostname
-
-{
-  echo ""
-  echo "#>"
-  echo "127.0.0.1 localhost"
-  echo "127.0.0.1 ${HOST_NAME}"
-  echo "#>"
-} >> /etc/hosts
-
-{
-  echo ""
-  echo "#>"
-  echo "Port ${SSH_PORT}"
-  echo "PermitRootLogin no"
-  echo "#>"
-} >> /etc/ssh/sshd_config
-
-sudo apt install -y git
-git clone https://github.com/434a52/.dot.git "${DOT}"
-
-/bin/su -c "${DOT}/setup.sh --install-tools" - "${USER_NAME}"
-
-echo "*** Rebooting Machine ***"
-
-reboot
+"${DOT}"/setup.sh --install-tools

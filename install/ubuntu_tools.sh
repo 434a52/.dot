@@ -13,6 +13,7 @@ apt_install htop
 apt_install nmap
 apt_install tmux
 apt_install micro
+
 if [ "${OS_TYPE}" = "DESKTOP" ]; then
   apt_install fonts-firacode
 fi

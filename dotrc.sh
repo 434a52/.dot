@@ -9,7 +9,9 @@
 # TODO: ${HOME} won't work for new user account
 #       use /home/${user_name}/ if provided
 
-if ! [ -f "${HOME}/.dotrc" ]; then
+home=${HOME}
+
+if ! [ -f "${home}/.dotrc" ]; then
 
   os_name_default="UBUNTU"
   read -rp "OS_NAME [${os_name_default}]: " os_name
@@ -19,7 +21,7 @@ if ! [ -f "${HOME}/.dotrc" ]; then
   read -rp "OS_TYPE [${os_type_default}]: " os_type
   os_type="${os_type:-$os_type_default}"  
 
-  host_name_default=${HOST}
+  host_name_default=${HOSTNAME}
   read -rp "HOST_NAME [${host_name_default}]: " host_name
   host_name="${host_name:-$host_name_default}"
 
@@ -38,15 +40,15 @@ if ! [ -f "${HOME}/.dotrc" ]; then
   {
     echo "#!/bin/bash"
     echo ""
-    echo "export DOT=\"${user_name}/.dot\""
+    echo "export DOT=\"${home}/.dot\""
     echo "export OS_NAME=\"${os_name}\""
     echo "export OS_TYPE=\"${os_type}\""
     echo "export HOST_NAME=\"${host_name}\""
     echo "export USER_NAME=\"${user_name}\""
     echo "export USER_EMAIL=\"${user_email}\""
     echo "export SSH_PORT=\"${ssh_port}\""
-  } > "${HOME}"/.dotrc
+  } > "${home}"/.dotrc
   
 fi
 
-source "${HOME}"/.dotrc
+source "${home}"/.dotrc
