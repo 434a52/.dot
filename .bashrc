@@ -10,6 +10,7 @@ if [ -f /etc/bash_completion ]; then
   source /etc/bash_completion
 fi
 
+export BASH_SILENCE_DEPRICATION_WARNING=1
 export PATH=${PATH}:${HOME}/bin
 
 source "${HOME}"/.dotrc
