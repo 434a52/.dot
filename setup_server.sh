@@ -1,61 +1,41 @@
 #!/bin/bash
-set -euo pipefail
+# shellcheck disable=1090
+# /etc/default/motd-news :: ENABLED=0
+set -e
 
-read -rp "hostname: " host_name
-read -rp "user.name: " user_name
-read -rp "user.email: " user_email
-read -rp "ssh port: " ssh_port
-read -rp "Press Y to proceed" proceed
+read -rp "USER_NAME: " USER_NAME
 
-if [ "${proceed}" = "Y" ]; then
+adduser "${USER_NAME}"
+usermod -a -G sudo "${USER_NAME}"
+sudo passwd "${USER_NAME}"
 
-  timedatectl set-timezone 'UTC'
+./dotrc.sh --user_name="${USER_NAME}" --os_name=UBUNTU --os_type=SERVER
 
-  sudo apt install -y git
+timedatectl set-timezone 'UTC'
 
-  echo "${host_name}" > /etc/hostname
+echo "${HOST_NAME}" > /etc/hostname
 
-  {
-    echo ""
-    echo "#>"
-    echo "127.0.0.1 localhost"
-    echo "127.0.0.1 ${host_name}"
-    echo "#>"
-  } >> /etc/hosts
+{
+  echo ""
+  echo "#>"
+  echo "127.0.0.1 localhost"
+  echo "127.0.0.1 ${HOST_NAME}"
+  echo "#>"
+} >> /etc/hosts
 
-  adduser "${user_name}"
-  usermod -a -G sudo "${user_name}"
-  sudo passwd "${user_name}"
+{
+  echo ""
+  echo "#>"
+  echo "Port ${SSH_PORT}"
+  echo "PermitRootLogin no"
+  echo "#>"
+} >> /etc/ssh/sshd_config
 
-  {
-    echo ""
-    echo "#>"
-    echo "Port ${ssh_port}"
-    echo "PermitRootLogin no"
-    echo "#>"
-  } >> /etc/ssh/sshd_config
+sudo apt install -y git
+git clone https://github.com/434a52/.dot.git "${DOT}"
 
-  export DOT="/home/${user_name}/.dot"
+/bin/su -c "${DOT}/setup.sh --install-tools" - "${USER_NAME}"
 
-  {
-    echo "#!/bin/bash"
-    echo "set -e"
-    echo ""
-    echo "export DOT=\"${DOT}\""
-    echo "export OS_NAME=\"UBUNTU\""
-    echo "export OS_TYPE=\"SERVER\""
-    echo "export HOST_NAME=\"${host_name}\""
-    echo "export USER_NAME=\"${user_name}\""
-    echo "export USER_EMAIL=\"${user_email}\""
-    echo "export SSH_PORT=\"${ssh_port}\""
-  } > "/home/${user_name}/.dotrc"
+echo "*** Rebooting Machine ***"
 
-  git clone https://github.com/434a52/.dot.git "${DOT}"
-
-  /bin/su -c "${DOT}/setup.sh --install-tools" - "${user_name}"
-
-  echo "*** Rebooting Machine ***"
-
-  sudo reboot
-
-fi
+reboot

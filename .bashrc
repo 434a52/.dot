@@ -1,7 +1,5 @@
 #!/bin/bash
-# shellcheck disable=SC2034,1091,1090
-
-# /etc/default/motd-news :: ENABLED=0
+# shellcheck disable=1090
 
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
