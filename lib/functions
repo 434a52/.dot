@@ -32,10 +32,10 @@ function sd() {
       for key in "${!dir_list[@]}"; do
         echo "${key}=${dir_list[$key]}"
       done > "${HOME}/.dot_dirs"
-    elif [ -n "${ZSH}" ]; then
-      for key value in ${(kv)dir_list}; do
-        echo "${key}=${value}"
-      done > "${HOME}/.dot_dirs"
+    # elif [ -n "${ZSH}" ]; then
+    #   for key value in ${(kv)dir_list}; do
+    #     echo "${key}=${value}"
+    #   done > "${HOME}/.dot_dirs"
     fi
   fi
 }

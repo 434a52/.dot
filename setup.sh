@@ -1,7 +1,8 @@
 #!/bin/bash
 # shellcheck disable=1090
+set -e
 
-./dotrc.sh
+"${HOME}"/.dot/dotrc.sh
 
 if ! [[ -d "${HOME}/bin" ]]; then
   mkdir "${HOME}/bin"
