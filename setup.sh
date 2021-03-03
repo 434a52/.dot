@@ -3,6 +3,7 @@
 set -e
 
 "${HOME}"/.dot/dotrc.sh
+source "${HOME}"/.dotrc
 
 if ! [[ -d "${HOME}/bin" ]]; then
   mkdir "${HOME}/bin"

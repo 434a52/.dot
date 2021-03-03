@@ -7,4 +7,7 @@ if ! [[ -d "${DOT}" ]]; then
 fi
 
 "${DOT}"/dotrc.sh --os_name=UBUNTU --os_type=SERVER
+
+source "${HOME}"/.dotrc
+
 "${DOT}"/setup.sh --install-tools

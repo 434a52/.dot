@@ -7,4 +7,7 @@ if ! [[ -d "${DOT}" ]]; then
 fi
 
 "${DOT}"/dotrc.sh --os_name=MAC --os_type=DESKTOP
+
+source "${HOME}"/.dotrc
+
 "${DOT}"/setup.sh --install-tools

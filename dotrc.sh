@@ -50,5 +50,3 @@ if ! [ -f "${home}/.dotrc" ]; then
   } > "${home}"/.dotrc
   
 fi
-
-source "${home}"/.dotrc
