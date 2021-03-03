@@ -66,13 +66,14 @@ if [ -e "${HOME}/.dotrc" ]; then
     link .bashrc
     source "${HOME}/.bashrc"
   elif [ "${OS_NAME}" == "MAC" ]; then
-    ln -s ${DOT}/lib/dot.zsh-theme ${ZSH}/themes
+    touch "${HOME}"/.hushlogin
+    ln -s "${DOT}"/lib/dot.zsh-theme "${ZSH}"/themes
     {
       echo "#|>"
       echo source "${HOME}/.dotrc"
       echo source "${DOT}/lib/zshrc"
       echo "#<|"
-    } >> "${HOME}/.zshrc"
+    } >> "${HOME}"/.zshrc
   fi
 
   for file in bin/*.sh; do
