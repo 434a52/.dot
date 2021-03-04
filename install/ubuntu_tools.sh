@@ -15,5 +15,6 @@ apt_install tmux
 apt_install micro
 
 if [ "${OS_TYPE}" = "DESKTOP" ]; then
+  apt_install gnome-tweaks
   apt_install fonts-firacode
 fi

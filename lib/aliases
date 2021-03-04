@@ -5,6 +5,7 @@ alias mi='micro'
 alias md='mkdir -pv'
 alias cp='cp -rv'
 alias mv='mv -v'
+alias rm='rm -rv'
 
 alias link='ln -svi'
 

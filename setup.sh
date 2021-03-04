@@ -31,12 +31,8 @@ if ! [[ -e "${HOME}/.ssh/config" ]]; then
 fi
 
 function link {
-  source="${HOME}/.dot/${1}"
-  if [[ $# -eq 1 ]]; then
-    target="${HOME}/${1}"
-  else
-    target="${HOME}/${2}"
-  fi
+  source="${HOME}"/.dot/${1}
+  target="${HOME}"/${1}
   target_directory=$(dirname "${target}")
   # echo "${source} >> ${target}"
   if [ -h "${target}" ]; then
@@ -59,9 +55,15 @@ function link {
 
 link .editorconfig
 
+for file in "${DOT}"/bin/*; do
+  if [ -f "${file}" ]; then
+    link "/bin/$(basename "${file}")"
+  fi
+done
+
 if [ "${OS_NAME}" = "UBUNTU" ]; then
   if [[ "$*" =~ "--install-tools" ]]; then
-    "${HOME}/.dot/install/ubuntu_tools.sh"
+    "${HOME}"/.dot/install/ubuntu_tools.sh
   fi
   link .bashrc
   source "${HOME}"/.bashrc
@@ -78,9 +80,6 @@ elif [ "${OS_NAME}" = "MAC" ]; then
     echo source "${DOT}/lib/zshrc"
     echo "#<|"
   } >> "${HOME}"/.zshrc
+  exec zsh
+  
 fi
-
-# for file in bin/*.sh; do
-#   [ -e "${file}" ] || continue
-#   link "${file}"
-# done

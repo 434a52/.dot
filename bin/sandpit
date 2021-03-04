@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "*** sandpit ***"
+
+declare -A args
+for arg in "$@"; do
+  args[${arg%=*}]=${arg##*=}
+done
+
+echo "${args[foo]}"
+echo "${args[bar]}"

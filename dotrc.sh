@@ -1,23 +1,27 @@
 #!/bin/bash
 # shellcheck disable=1090
 
-# args;
-# --user_name
-# --os_name
-# --os_type
-
-# TODO: ${HOME} won't work for new user account
-#       use /home/${user_name}/ if provided
+declare -A args
+args["os_name"]="UBUNTU"
+args["os_type"]="SERVER"
+for arg in "$@"; do
+  args[${arg%=*}]=${arg##*=}
+done
 
 home=${HOME}
+if [ -v args["user_name"] ]; then
+  home=/home/${args["user_name"]}
+else
+  args["user_name"]=${USER}
+fi
 
 if ! [ -f "${home}/.dotrc" ]; then
 
-  os_name_default="UBUNTU"
+  os_name_default=${args["os_name"]}
   read -rp "OS_NAME [${os_name_default}]: " os_name
   os_name="${os_name:-$os_name_default}"
 
-  os_type_default="SERVER"
+  os_type_default=${args["os_type"]}
   read -rp "OS_TYPE [${os_type_default}]: " os_type
   os_type="${os_type:-$os_type_default}"  
 
@@ -25,7 +29,7 @@ if ! [ -f "${home}/.dotrc" ]; then
   read -rp "HOST_NAME [${host_name_default}]: " host_name
   host_name="${host_name:-$host_name_default}"
 
-  user_name_default=${USER}
+  user_name_default=${args[user_name]}
   read -rp "USER_NAME [${user_name_default}]: " user_name
   user_name="${user_name:-$user_name_default}"
 
