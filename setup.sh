@@ -57,13 +57,15 @@ function link {
   ln -sfn "${source}" "${target}"
 }
 
+link .editorconfig
+
 if [ "${OS_NAME}" = "UBUNTU" ]; then
   if [[ "$*" =~ "--install-tools" ]]; then
     "${HOME}/.dot/install/ubuntu_tools.sh"
   fi
   link .bashrc
   source "${HOME}"/.bashrc
-  
+
 elif [ "${OS_NAME}" = "MAC" ]; then
   if [[ "$*" =~ "--install-tools" ]]; then
     "${HOME}"/.dot/install/mac_tools.sh
