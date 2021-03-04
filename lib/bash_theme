@@ -20,4 +20,4 @@ white='\[\e[1;37m\]'
 
 export PS1="${purple}\h ${green}\w ${blue}\$(git_branch)${none}> "
 
-set_title "\h  \w"
+set_title "\h"
