@@ -3,5 +3,7 @@
 export PATH=${PATH}:${HOME}/bin
 
 source $DOT/lib/aliases
+source $DOT/lib/zsh_aliases
 source $DOT/lib/functions
+source $DOT/lib/zsh_fns
 

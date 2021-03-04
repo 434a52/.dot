@@ -1,0 +1,28 @@
+#!/usr/bin/zsh
+
+function dot_reset() {
+  exec zsh
+}
+
+function sd() {
+  declare -A dir_list
+  while IFS="=" read -r key value; do
+    dir_list[$key]=$value
+  done < "${HOME}/.dot_dirs"
+  if [ "$#" -eq 0 ]; then
+    cat "${HOME}/.dot_dirs"
+  elif [ "$#" -eq 1 ]; then
+    if [[ -v dir_list[$1] ]]; then
+      cd "${dir_list[$1]}"
+    fi
+  else
+    if [ -z "$2" ]; then
+      unset "dir_list[$1]"
+    else
+      dir_list[$1]=$2
+    fi
+    for key value in ${(kv)dir_list}; do
+      echo "${key}=${value}"
+    done > "${HOME}/.dot_dirs"
+  fi
+}

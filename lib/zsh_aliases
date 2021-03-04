@@ -1,0 +1,4 @@
+#!/usr/bin/zsh
+
+alias ls='ls -lhgF'
+alias ll='ls -vlAhgF'

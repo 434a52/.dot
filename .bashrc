@@ -14,5 +14,7 @@ export PATH=${PATH}:${HOME}/bin
 
 source "${HOME}"/.dotrc
 source "${DOT}"/lib/functions
+source "${DOT}"/lib/bash_fns
 source "${DOT}"/lib/aliases
-source "${DOT}"/lib/theme
+source "${DOT}"/lib/bash_aliases
+source "${DOT}"/lib/bash_theme
