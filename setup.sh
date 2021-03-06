@@ -74,6 +74,7 @@ elif [ "${OS_NAME}" = "MAC" ]; then
   fi
   touch "${HOME}"/.hushlogin
   ln -s "${DOT}"/lib/dot.zsh-theme "${ZSH}"/themes
+  remove_lines file="${HOME}"/.zshrc
   {
     echo "#|>"
     echo source "${HOME}/.dotrc"

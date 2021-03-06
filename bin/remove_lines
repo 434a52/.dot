@@ -1,0 +1,29 @@
+#!/bin/bash
+
+declare -A args
+args["file"]=""
+args["delimiter0"]="#|>"
+args["delimiter1"]="#<|"
+for arg in "$@"; do
+  args[${arg%=*}]=${arg##*=}
+done
+
+index=1
+line0=0
+line1=0
+if [ -f ${args["file"]} ]; then
+  while IFS= read -r line; do
+    if [[ "${line}" =~ ^"${args["delimiter0"]}".* ]]; then
+      line0=${index}
+    elif [[ "${line}" =~ ^"${args["delimiter1"]}".* ]]; then
+      line1=${index}
+    fi
+    ((index+=1))
+  done < ${args["file"]}
+fi
+
+if [ ${line0} -gt 0 ] && [ ${line1} -gt 0 ]; then
+  sed -i "${line0},${line1}d" ${args["file"]}
+fi
+
+cat ${args["file"]}
