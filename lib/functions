@@ -3,7 +3,7 @@
 
 function dot-reload() {
   (cd "${DOT}" && git pull --ff-only)
-  dot_reset
+  dot-reset
 }
 
 function create-key() {
