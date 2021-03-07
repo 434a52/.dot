@@ -5,6 +5,10 @@ set -e
 "${HOME}"/.dot/dotrc.sh
 source "${HOME}"/.dotrc
 
+if ! [[ -d "${HOME}/.bin" ]]; then
+  mkdir "${HOME}/.bin"
+fi
+
 if ! [[ -d "${HOME}/bin" ]]; then
   mkdir "${HOME}/bin"
 fi
@@ -82,5 +86,5 @@ elif [ "${OS_NAME}" = "MAC" ]; then
     echo "#<|"
   } >> "${HOME}"/.zshrc
   exec zsh
-  
+
 fi

@@ -12,7 +12,8 @@ apt_install wget
 apt_install htop
 apt_install nmap
 apt_install tmux
-apt_install micro
+
+( cd "${HOME}"/.bin && curl https://getmic.ro | bash )
 
 if [ "${OS_TYPE}" = "DESKTOP" ]; then
 
