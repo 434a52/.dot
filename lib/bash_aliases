@@ -18,6 +18,7 @@ alias meminfo='free -mlt'
 alias cpuinfo='lscpu'
 alias hostinfo='hostnamectl'
 
+alias install='sudo apt install'
 alias sysd='sudo systemctl'
 alias reload='sudo systemctl reload'
 alias restart='sudo systemctl restart'
