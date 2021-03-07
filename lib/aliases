@@ -19,3 +19,5 @@ alias nowdt='date +"%d-%m-%Y %T"'
 alias follow='tail -fn +1'
 
 alias create-uuid='uuidgen'
+
+alias git-ff='git pull --ff-only'
