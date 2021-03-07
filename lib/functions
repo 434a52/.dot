@@ -10,6 +10,18 @@ function create-key() {
   cat /dev/urandom | base64 | tr -dc 'a-zA-Z0-9' | fold -w "${1:-128}" | head -n 1
 }
 
+function lsd() {
+  declare -A dir_list
+  while IFS="=" read -r key value; do
+    dir_list[$key]=$value
+  done < "${HOME}/.dot_dirs"
+  if [ "$#" -eq 1 ]; then
+    if [[ -v dir_list[$1] ]]; then
+      ll "${dir_list[$1]}" || exit
+    fi
+  fi
+}
+
 function cdl() {
   cd "${1}" && ll "${PWD}"
 }

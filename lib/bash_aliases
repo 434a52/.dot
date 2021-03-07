@@ -1,8 +1,7 @@
 #!/bin/bash
 
-alias ls='ls -lhgF --color=auto --group-directories-first'
-alias ll='ls -vlAhgF'
-alias lf='ls -pv | grep -v /'
+alias ll='ls -vlAhgF --color=auto --group-directories-first'
+alias lf='ls -pvlAhgF --color=auto --group-directories-first | grep -v /'
 alias ld='\ls --color=auto -vhld -- */'
 
 alias ..='cd ..'
