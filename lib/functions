@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=1090
 
-function dot_reload() {
+function dot-reload() {
   (cd "${DOT}" && git pull --ff-only)
   dot_reset
 }
@@ -18,21 +18,21 @@ function mkcd() {
   mkdir -p -- "$1" && cd -P -- "$1" || exit
 }
 
-function clone_all() {
+function clone-all() {
   repo_list="${HOME}/code/repo-list"
   while read -r repo; do
     echo "${repo}"
   done < "${repo_list}"
 }
 
-function pull_all() {
+function pull-all() {
   for repo in */.git; do
     echo "${repo}"
     (cd "${repo}/.." && git pull --ff-only)
   done
 }
 
-function apt_update() {
+function apt-update() {
   if sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y; then
     if [ -f /var/run/reboot-required ]; then
       echo -e "\e[33m*** Reboot Required ***\e[0m"
@@ -44,7 +44,7 @@ function apt_update() {
   fi
 }
 
-function set_title() {
+function set-title() {
   if [ -z "$PS1_BACK" ]; then
     PS1_BACK="$PS1"
   fi
@@ -52,6 +52,6 @@ function set_title() {
   PS1="${PS1_BACK}${TITLE}"
 }
 
-function git_branch() {
+function git-branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1] /'
 }
