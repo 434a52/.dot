@@ -6,6 +6,10 @@ function dot_reload() {
   dot_reset
 }
 
+function create-key() {
+  cat /dev/urandom | base64 | tr -dc 'a-zA-Z0-9' | fold -w "${1:-128}" | head -n 1
+}
+
 function cdl() {
   cd "${1}" && ll "${PWD}"
 }
