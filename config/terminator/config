@@ -8,6 +8,12 @@
   title_use_system_font = False
   title_font = Fira Code weight=453 11
 [keybindings]
+  cycle_next = None
+  cycle_prev = None
+  move_tab_right = <Primary><Shift>Left
+  move_tab_left = <Primary><Shift>Right
+  next_tab = <Primary>Tab
+  prev_tab = <Primary><Shift>Tab
 [profiles]
   [[default]]
     allow_bold = False
