@@ -17,10 +17,11 @@ apt_install tmux
 
 if [ "${OS_TYPE}" = "DESKTOP" ]; then
 
-  gsettings set org.gnome.desktop.background picture-options 'none'
-  gsettings set org.gnome.desktop.background primary-color '#000000'
+  #gsettings set org.gnome.desktop.background picture-options 'none'
+  #gsettings set org.gnome.desktop.background primary-color '#000000'
 
   apt_install gnome-tweaks
+  #apt_install dconf-editor
   apt_install fonts-firacode
 
 fi
