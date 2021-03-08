@@ -1,0 +1,14 @@
+#!/bin/bash
+
+read -rp "Create SSL for domain:" domain
+read -rp "Run certbot [Y/N]:" ok
+
+if [ "${ok^}" = "Y" ] && [ -n "${domain}" ]; then
+
+  certbot certonly \
+    --dns-linode \
+    --dns-linode-credentials ~/.config/certbot/linode.ini \
+    -d "${domain}".com \
+    -d www."${domain}".com
+
+fi
