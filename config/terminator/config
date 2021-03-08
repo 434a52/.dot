@@ -1,18 +1,21 @@
 [global_config]
   focus = system
+  handle_size = 3
   borderless = True
   extra_styling = False
   title_hide_sizetext = True
+  inactive_color_offset = 1.0
   title_use_system_font = False
-  title_font = Fira Code weight=453 10
+  title_font = Fira Code weight=453 11
 [keybindings]
 [profiles]
   [[default]]
+    allow_bold = False
     visible_bell = True
     icon_bell = False
     cursor_shape = underline
     cursor_color = "#aaaaaa"
-    font = Fira Code weight=453 10
+    font = Fira Code weight=453 11
     foreground_color = "#ffffff"
     show_titlebar = False
     scrollbar_position = hidden
@@ -25,4 +28,5 @@
     [[[child1]]]
       type = Terminal
       parent = window0
+      profile = default
 [plugins]

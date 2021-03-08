@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-function dot_reset() {
+function dot-reset() {
   exec zsh
 }
 

@@ -11,6 +11,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 export PATH=${PATH}:${HOME}/bin
+export PATH=${PATH}:${HOME}/.bin
 
 source "${HOME}"/.dotrc
 source "${DOT}"/lib/functions
