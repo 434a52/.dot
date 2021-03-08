@@ -1,11 +1,12 @@
 #!/bin/bash
 
 declare -A args
-args["file"]=""
-args["delimiter0"]="#|>"
-args["delimiter1"]="#<|"
 for arg in "$@"; do
-  args[${arg%=*}]=${arg##*=}
+  if [[ "${arg}" =~ ^--.* ]]; then
+    args[${arg#--}]=true
+  else
+    args[${arg%=*}]=${arg##*=}
+  fi
 done
 
 index=1

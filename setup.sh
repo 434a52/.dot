@@ -55,6 +55,15 @@ function link {
 
 link .editorconfig
 
+for file in "${HOME}/bin/*"; do
+  if [ -h "${file}" ]; then
+    # if [  ]; then
+    #   rm "${file}"
+    # fi
+    echo ""
+  fi
+done
+
 for file in "${DOT}"/bin/*; do
   if [ -f "${file}" ]; then
     link "/bin/$(basename "${file}")"
@@ -74,7 +83,7 @@ elif [ "${OS_NAME}" = "MAC" ]; then
   fi
   touch "${HOME}"/.hushlogin
   ln -s "${DOT}"/lib/dot.zsh-theme "${ZSH}"/themes
-  remove_lines file="${HOME}"/.zshrc
+  c-conf --clear file="${HOME}"/.zshrc
   {
     echo "#|>"
     echo source "${HOME}/.dotrc"

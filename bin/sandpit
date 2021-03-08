@@ -2,10 +2,22 @@
 
 echo "*** sandpit ***"
 
-declare -A args
-for arg in "$@"; do
-  args[${arg%=*}]=${arg##*=}
-done
+# declare -A args
+# for arg in "$@"; do
+#   if [[ "${arg}" =~ ^--.* ]]; then
+#     args[${arg#--}]=true
+#   else
+#     args[${arg%=*}]=${arg##*=}
+#   fi
+# done
 
-echo "${args[foo]}"
-echo "${args[bar]}"
+# echo "$@"
+# for key in "${!args[@]}"; do
+#   echo "${key}=${args[$key]}"
+# done
+
+for file in ${HOME}/bin/*; do
+  if [ -h "${file}" ]; then
+    readlink -f $file
+  fi
+done
