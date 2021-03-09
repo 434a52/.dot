@@ -7,6 +7,10 @@ alias cp='cp -rv'
 alias mv='mv -v'
 alias rm='rm -rv'
 
+alias cm-ux='chmod -v u+x'
+alias cm-ax='chmod -v a+x'
+alias cm-urw='chmod -v 600'
+
 alias link='ln -svi'
 
 alias cls='clear'
