@@ -5,7 +5,7 @@ read -rp "Run certbot for ${domain} [Y/N]: " ok
 
 if [ "${ok^}" = "Y" ] && [ -n "${domain}" ]; then
 
-  certbot certonly \
+  sudo certbot certonly \
     --dns-linode \
     --dns-linode-credentials "${HOME}"/.config/certbot/linode.ini \
     --dns-linode-propagation-seconds 120 \
