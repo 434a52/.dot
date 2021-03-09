@@ -11,7 +11,6 @@ if [ "${ok^}" = "Y" ] && [ -n "${domain}" ]; then
     --dns-linode-propagation-seconds 120 \
     -d "${domain}" \
     -d "www.${domain}" \
-    -d "*.${domain}" \
-    -d "www.*.${domain}"
+    -d "*.${domain}"
 
 fi
