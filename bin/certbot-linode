@@ -1,24 +1,29 @@
 #!/bin/bash
 
 read -rp "Create SSL for domain: " domain
+read -rp "Create [D]omain or [W]ildcard certificate [D/W]: " cert_type
 read -rp "Run certbot for ${domain} [Y/N]: " ok
 
-if [ "${ok^}" = "Y" ] && [ -n "${domain}" ]; then
+if [ "${ok^}" = "Y" ] && [ -n "${domain}" ] && [ -n "${cert_type}" ]; then
 
-  # wild card sub domain cert
-  sudo certbot certonly \
-    --dns-linode \
-    --dns-linode-credentials "${HOME}"/.config/certbot/linode.ini \
-    --dns-linode-propagation-seconds 120 \
-    -d "${domain}" \
-    -d "*.${domain}"
+  if [ "${cert_type^}" = "D" ]; then
+
+    sudo certbot certonly \
+      --dns-linode \
+      --dns-linode-credentials "${HOME}"/.config/certbot/linode.ini \
+      --dns-linode-propagation-seconds 120 \
+      -d "${domain}" \
+      -d "www.${domain}" \
+
+  elif [ "${cert_type^}" = "W" ]; then
+
+    sudo certbot certonly \
+      --dns-linode \
+      --dns-linode-credentials "${HOME}"/.config/certbot/linode.ini \
+      --dns-linode-propagation-seconds 120 \
+      -d "${domain}" \
+      -d "*.${domain}"
+
+  fi
 
 fi
-
-# standard cert request
-# sudo certbot certonly \
-#     --dns-linode \
-#     --dns-linode-credentials "${HOME}"/.config/certbot/linode.ini \
-#     --dns-linode-propagation-seconds 120 \
-#     -d "${domain}" \
-#     -d "www.${domain}" \
