@@ -9,7 +9,7 @@ if [ -z "$(which terminator)" ]; then
   {
     echo "/* #|> */"
     echo "VteTerminal, vte-terminal {"
-    echo "  padding: 0 0 0 10px;"
+    echo "  padding: 10px 0 0 10px;"
     echo "}"
     echo "/* #<| */"
   } >> "${HOME}"/.config/gtk-3.0/gtk.css

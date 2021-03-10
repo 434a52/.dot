@@ -13,6 +13,8 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=${PATH}:${HOME}/bin
 export PATH=${PATH}:${HOME}/.bin
 
+export MICRO_TRUECOLOR=1
+
 source "${HOME}"/.dotrc
 source "${DOT}"/lib/functions
 source "${DOT}"/lib/bash_fns

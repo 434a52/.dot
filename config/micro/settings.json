@@ -1,14 +1,14 @@
 {
-  "autosu": true,
-  "colorscheme": "twilight",
-  "diffgutter": true,
-  "fastdirty": true,
-  "pluginchannels": [
-    "https://raw.githubusercontent.com/micro-editor/plugin-channel/master/channel.json"
-  ],
-  "pluginrepos": [],
-  "rmtrailingws": true,
-  "tabmovement": true,
-  "tabsize": 2,
-  "tabstospaces": true
+    "autosu": true,
+    "colorscheme": "atom-dark",
+    "diffgutter": true,
+    "fastdirty": true,
+    "pluginchannels": [
+        "https://raw.githubusercontent.com/micro-editor/plugin-channel/master/channel.json"
+    ],
+    "pluginrepos": [],
+    "rmtrailingws": true,
+    "tabmovement": true,
+    "tabsize": 2,
+    "tabstospaces": true
 }
