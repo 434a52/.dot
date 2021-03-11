@@ -5,13 +5,15 @@ set -e
 
 read -rp "USER_NAME: " USER_NAME
 
+timedatectl set-timezone 'UTC'
+sudo apt install -y language-pack-en
+
 adduser "${USER_NAME}"
 usermod -a -G sudo "${USER_NAME}"
 sudo passwd "${USER_NAME}"
 
 ./dotrc.sh --user_name="${USER_NAME}" --os_name=UBUNTU --os_type=SERVER
 
-timedatectl set-timezone 'UTC'
 
 echo "${HOST_NAME}" > /etc/hostname
 
