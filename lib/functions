@@ -15,10 +15,8 @@ function lsd() {
   while IFS="=" read -r key value; do
     dir_list[$key]=$value
   done < "${HOME}/.dot_dirs"
-  if [ "$#" -eq 1 ]; then
-    if [[ -v dir_list[$1] ]]; then
-      ll "${dir_list[$1]}" || exit
-    fi
+  if [[ -v dir_list[$1] ]]; then
+    ll "${dir_list[$1]}" || exit
   fi
 }
 
