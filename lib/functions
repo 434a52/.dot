@@ -17,7 +17,7 @@ function lsd() {
   done < "${HOME}/.dot_dirs"
   if [[ -v dir_list[$1] ]]; then
     clear
-    ll "${dir_list[$1]}" || exit
+    ll "${dir_list[$1]}"
   fi
 }
 
