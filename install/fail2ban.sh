@@ -17,6 +17,7 @@ if [ -z "$(which fail2ban)" ]; then
     echo "[sshd-ddos]"
     echo "enabled = true"
     echo "port = ${SSH_PORT}"
+    echo ""
   } > /etc/fail2ban/jail.local
 
   sudo systemctl restart fail2ban

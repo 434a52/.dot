@@ -23,7 +23,7 @@ if ! [ -f "${home}/.dotrc" ]; then
 
   os_type_default=${args["os_type"]}
   read -rp "OS_TYPE [${os_type_default}]: " os_type
-  os_type="${os_type:-$os_type_default}"  
+  os_type="${os_type:-$os_type_default}"
 
   host_name_default=${HOSTNAME}
   read -rp "HOST_NAME [${host_name_default}]: " host_name
@@ -39,7 +39,7 @@ if ! [ -f "${home}/.dotrc" ]; then
 
   ssh_port_default=22
   read -rp "SSH_PORT [${ssh_port_default}]: " ssh_port
-  ssh_port="${ssh_port:-$ssh_port_default}"    
+  ssh_port="${ssh_port:-$ssh_port_default}"
 
   {
     echo "#!/bin/bash"
@@ -51,6 +51,7 @@ if ! [ -f "${home}/.dotrc" ]; then
     echo "export USER_NAME=\"${user_name}\""
     echo "export USER_EMAIL=\"${user_email}\""
     echo "export SSH_PORT=\"${ssh_port}\""
+    echo ""
   } > "${home}"/.dotrc
-  
+
 fi
