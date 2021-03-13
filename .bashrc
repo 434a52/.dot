@@ -15,7 +15,9 @@ export PATH=${PATH}:${HOME}/.bin
 
 export MICRO_TRUECOLOR=1
 
-source "${HOME}"/.dotrc
+[ -s "${HOME}"/.dotrc ] && source "${HOME}"/.dotrc
+[ -s "${HOME}"/.secrets ] && source "${HOME}"/.secrets
+
 source "${DOT}"/lib/functions
 source "${DOT}"/lib/bash_fns
 source "${DOT}"/lib/aliases

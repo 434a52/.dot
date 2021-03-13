@@ -16,8 +16,10 @@ echo "*** sandpit ***"
 #   echo "${key}=${args[$key]}"
 # done
 
-for file in ${HOME}/bin/*; do
-  if [ -h "${file}" ]; then
-    readlink -f $file
-  fi
-done
+# for file in ${HOME}/bin/*; do
+#   if [ -h "${file}" ]; then
+#     readlink -f $file
+#   fi
+# done
+
+
