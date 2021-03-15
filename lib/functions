@@ -54,3 +54,8 @@ function set-title() {
 function git-branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1] /'
 }
+
+function home() {
+  echo "user name:  $(uname)"
+  echo "host name:  $(hostname)"
+}
