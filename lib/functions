@@ -56,6 +56,20 @@ function git-branch() {
 }
 
 function home() {
-  echo "user name:  $(uname)"
-  echo "host name:  $(hostname)"
+  cd $HOME
+  user="$USER @ $(hostname)"
+  hr="------------------------------------------"
+  public_ip=$(curl -s ipinfo.io/ip)
+  ip=$(hostname -I)
+  os=$(lsb_release -s -d)
+  clear
+  echo ""
+  echo "$user"
+  echo "${hr::${#user}}"
+  echo "  date:  $(date +"%Y-%m-%d %T")"
+  echo "kernel:  $(uname -r) $(uname -m)"
+  echo "    os:  ${os}"
+  echo " local:  ${ip%% *}"
+  echo "public:  ${public_ip}"
+  echo ""
 }
