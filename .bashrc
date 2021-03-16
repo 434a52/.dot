@@ -15,6 +15,12 @@ export PATH=${PATH}:${HOME}/.bin
 
 export MICRO_TRUECOLOR=1
 
+PUBLIC_IP=$(curl -s ipinfo.io/ip)
+export PUBLIC_IP
+
+local_ip=$(hostname -I)
+export LOCAL_IP=${local_ip%% *}
+
 [ -s "${HOME}"/.dotrc ] && source "${HOME}"/.dotrc
 [ -s "${HOME}"/.secrets ] && source "${HOME}"/.secrets
 

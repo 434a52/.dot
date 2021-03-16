@@ -44,21 +44,51 @@ function apt-update() {
   fi
 }
 
+function read-row() {
+  mapfile -t rows <<< "${1}"
+  echo "${rows[$2]}"
+}
+
+function read-col() {
+  columns=("${1}")
+  echo "${columns[$2]}"
+}
+
+function disk-info() {
+  disk_free=$(df -h /)
+  data=($(read-row "${disk_free}" 1))
+  echo "${data[3]} free (${data[4]} used)"
+}
+
+function memory-info() {
+  mem_free=$(free -h --si)
+  data=($(read-row "${mem_free}" 1))
+  echo "${data[2]} of ${data[1]}"
+}
+
+function swap-info() {
+  mem_free=$(free -h --si)
+  data=($(read-row "${mem_free}" 2))
+  echo "${data[2]} of ${data[1]}"
+}
+
 function home() {
   cd "${HOME}" || exit
   user="$USER @ $(hostname)"
   hr="------------------------------------------"
-  public_ip=$(curl -s ipinfo.io/ip)
-  ip=$(hostname -I)
   os=$(lsb_release -s -d)
+
   clear
   echo ""
-  echo "$user"
-  echo "${hr::${#user}}"
-  echo "  date:  $(date +"%Y-%m-%d %T")"
-  echo "kernel:  $(uname -r) $(uname -m)"
-  echo "    os:  ${os}"
-  echo " local:  ${ip%% *}"
-  echo "public:  ${public_ip}"
+  echo "  $user"
+  echo "  ${hr::${#user}}"
+  echo "    date:  $(date +"%Y-%m-%d %T")"
+  echo "  kernel:  $(uname -r) $(uname -m)"
+  echo "      os:  ${os}"
+  echo "    disk:  $(disk-info)"
+  echo "  memory:  $(memory-info)"
+  echo "    swap:  $(swap-info)"
+  echo "   local:  ${LOCAL_IP}"
+  echo "  public:  ${PUBLIC_IP}"
   echo ""
 }
