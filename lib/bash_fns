@@ -43,3 +43,22 @@ function apt-update() {
     echo -e "\e[31m*** System Update Failed ***\e[0m"
   fi
 }
+
+function home() {
+  cd "${HOME}" || exit
+  user="$USER @ $(hostname)"
+  hr="------------------------------------------"
+  public_ip=$(curl -s ipinfo.io/ip)
+  ip=$(hostname -I)
+  os=$(lsb_release -s -d)
+  clear
+  echo ""
+  echo "$user"
+  echo "${hr::${#user}}"
+  echo "  date:  $(date +"%Y-%m-%d %T")"
+  echo "kernel:  $(uname -r) $(uname -m)"
+  echo "    os:  ${os}"
+  echo " local:  ${ip%% *}"
+  echo "public:  ${public_ip}"
+  echo ""
+}
