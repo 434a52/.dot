@@ -24,4 +24,8 @@ if [ "${OS_TYPE}" = "DESKTOP" ]; then
   #apt_install dconf-editor
   apt_install fonts-firacode
 
+  sudo add-apt-repository ppa:papirus/papirus
+  sudo apt-get update
+  sudo apt-get install papirus-icon-theme
+
 fi

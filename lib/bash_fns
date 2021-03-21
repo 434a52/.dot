@@ -82,24 +82,30 @@ function swap-info() {
   echo "${data[2]} of ${data[1]}"
 }
 
+function os-info() {
+  os=$(lsb_release -s -d)
+  code=$(lsb_release -s -c)
+  echo "${os} (${code})"
+}
+
+alias hm='home'
 function home() {
+  clear
   cd "${HOME}" || exit
   user="$USER @ $(hostname)"
   hr="------------------------------------------"
-  os=$(lsb_release -s -d)
 
-  clear
-  echo ""
-  echo "  $user"
-  echo "  ${hr::${#user}}"
-  echo "    date:  $(date +"%Y-%m-%d %T")"
+  echo " $user"
+  echo " ${hr::${#user}}"
+  echo "      os:  $(os-info)"
   echo "  kernel:  $(uname -r) $(uname -m)"
-  echo "      os:  ${os}"
-  echo "     cpu:  $(cpu-info) cores$(load-average)"
-  echo "    disk:  $(disk-info)"
+  echo "    date:  $(date +"%Y-%m-%d %T")"
   echo "  memory:  $(memory-info)"
+  echo " storage:  $(disk-info)"
   echo "    swap:  $(swap-info)"
   echo "   local:  ${LOCAL_IP}"
   echo "  public:  ${PUBLIC_IP}"
   echo ""
 }
+
+
