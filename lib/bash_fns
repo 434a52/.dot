@@ -54,6 +54,16 @@ function read-col() {
   echo "${columns[$2]}"
 }
 
+function cpu-info() {
+  core_count=$(lscpu -b -p=Core,Socket | grep -v '^#' | sort -u | wc -l)
+  echo "${core_count}"
+}
+
+function load-average() {
+  load_average=$(uptime | awk -F'[a-z]:' '{print $2}')
+  echo "${load_average}"
+}
+
 function disk-info() {
   disk_free=$(df -h /)
   data=($(read-row "${disk_free}" 1))
@@ -85,6 +95,7 @@ function home() {
   echo "    date:  $(date +"%Y-%m-%d %T")"
   echo "  kernel:  $(uname -r) $(uname -m)"
   echo "      os:  ${os}"
+  echo "     cpu:  $(cpu-info) cores$(load-average)"
   echo "    disk:  $(disk-info)"
   echo "  memory:  $(memory-info)"
   echo "    swap:  $(swap-info)"
