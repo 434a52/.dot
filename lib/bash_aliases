@@ -11,6 +11,8 @@ alias ....='cd ../../../'
 alias .....='cd ../../../../'
 alias ~='cd ~'
 
+alias usage='du -h -s *'
+
 alias df='df -H --total'
 alias ports='netstat -tulanp'
 
