@@ -49,11 +49,6 @@ function read-row() {
   echo "${rows[$2]}"
 }
 
-function read-col() {
-  columns=("${1}")
-  echo "${columns[$2]}"
-}
-
 function cpu-info() {
   core_count=$(lscpu -b -p=Core,Socket | grep -v '^#' | sort -u | wc -l)
   echo "${core_count}"
@@ -73,19 +68,24 @@ function disk-info() {
 function memory-info() {
   mem_free=$(free -h --si)
   data=($(read-row "${mem_free}" 1))
-  echo "${data[2]} of ${data[1]}"
+  echo "${data[2]} / ${data[1]}"
 }
 
 function swap-info() {
   mem_free=$(free -h --si)
   data=($(read-row "${mem_free}" 2))
-  echo "${data[2]} of ${data[1]}"
+  echo "${data[2]} / ${data[1]}"
 }
 
 function os-info() {
   os=$(lsb_release -s -d)
   code=$(lsb_release -s -c)
   echo "${os} (${code})"
+}
+
+function gnome-version() {
+  version=($(gnome-shell --version))
+  echo "${version[2]}"
 }
 
 alias hm="home"
@@ -99,6 +99,8 @@ function home() {
   echo "  ${hr::${#user}}"
   echo "      os:  $(os-info)"
   echo "  kernel:  $(uname -r) $(uname -m)"
+  echo "   gnome:  $(gnome-version)"
+  echo "    bash:  ${BASH_VERSION}"
   echo "    date:  $(date +"%Y-%m-%d %T")"
   echo "     cpu:  $(cpu-info) cores$(load-average)"
   echo "  memory:  $(memory-info)"
