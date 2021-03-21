@@ -88,18 +88,18 @@ function os-info() {
   echo "${os} (${code})"
 }
 
-alias hm='home'
 function home() {
   clear
   cd "${HOME}" || exit
   user="$USER @ $(hostname)"
+  echo ""
+  echo "  $user"
   hr="------------------------------------------"
-
-  echo " $user"
-  echo " ${hr::${#user}}"
+  echo "  ${hr::${#user}}"
   echo "      os:  $(os-info)"
   echo "  kernel:  $(uname -r) $(uname -m)"
   echo "    date:  $(date +"%Y-%m-%d %T")"
+  echo "     cpu:  $(cpu-info) cores$(load-average)"
   echo "  memory:  $(memory-info)"
   echo " storage:  $(disk-info)"
   echo "    swap:  $(swap-info)"
@@ -107,5 +107,3 @@ function home() {
   echo "  public:  ${PUBLIC_IP}"
   echo ""
 }
-
-
