@@ -98,9 +98,13 @@ function home() {
   hr="------------------------------------------"
   echo "  ${hr::${#user}}"
   echo "      os:  $(os-info)"
+  if [ "${1}" == "-v" ]; then
   echo "  kernel:  $(uname -r) $(uname -m)"
+  if [ -n "$(which terminator)" ]; then
   echo "   gnome:  $(gnome-version)"
+  fi
   echo "    bash:  ${BASH_VERSION}"
+  fi
   echo "    date:  $(date +"%Y-%m-%d %T")"
   echo "     cpu:  $(cpu-info) cores$(load-average)"
   echo "  memory:  $(memory-info)"

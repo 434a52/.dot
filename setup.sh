@@ -59,7 +59,7 @@ function link {
 
 link .editorconfig
 
-for file in "${HOME}/bin/*"; do
+for file in "${HOME}"/bin/*; do
   if [ -h "${file}" ]; then
     # if [  ]; then
     #   rm "${file}"
