@@ -64,7 +64,7 @@ function disk-info() {
   data=($(read-row "${disk_free}" 1))
   total=${data[1]}
   used=${data[2]}
-  echo "$(percent-used "$total" "$used")%  of $total"
+  echo "$(percent-used "$total" "$used")% of $total"
 }
 
 function memory-info() {
@@ -107,7 +107,7 @@ function home() {
   echo "      os:  $(os-info)"
   if [ "${1}" == "-v" ]; then
   echo "  kernel:  $(uname -r) $(uname -m)"
-  if [ -n "$(which gnome-version)" ]; then
+  if [ -n "$XDG_CURRENT_DESKTOP" ]; then
   echo "   gnome:  $(gnome-version)"
   fi
   echo "    bash:  ${BASH_VERSION}"
