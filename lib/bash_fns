@@ -68,11 +68,12 @@ function disk-info() {
 }
 
 function memory-info() {
+  mem_free=$(free --si)
+  data=($(read-row "${mem_free}" 1))
+  percent=$(percent-used "${data[1]}" "${data[2]}")
   mem_free=$(free -h --si)
   data=($(read-row "${mem_free}" 1))
-  total=${data[1]}
-  used=${data[2]}
-  echo "$(percent-used "$total" "$used")% of $total"
+  echo "$percent% of ${data[1]}"
 }
 
 function swap-info() {
