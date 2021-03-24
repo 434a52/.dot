@@ -2,6 +2,8 @@
 
 echo "*** sandpit ***"
 
+echo ">>"$(trim " a b c  ")"<<"
+
 # declare -A args
 # for arg in "$@"; do
 #   if [[ "${arg}" =~ ^--.* ]]; then

@@ -54,3 +54,36 @@ function set-title() {
 function git-branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1] /'
 }
+
+function trim() {
+  local trimmed="$1"
+  trimmed=$(ltrim "${trimmed}")
+  trimmed=$(rtrim "${trimmed}")
+  echo "${trimmed}"
+}
+
+function ltrim() {
+  local trimmed="$1"
+  while [[ $trimmed == ' '* ]]; do
+    trimmed="${trimmed## }"
+  done
+  echo "${trimmed}"
+}
+
+function rtrim() {
+  local trimmed="$1"
+  while [[ $trimmed == *' ' ]]; do
+    trimmed="${trimmed%% }"
+  done
+  echo "${trimmed}"
+}
+
+function percent-used() {
+  percent=$(echo "100 / $1 * $2" | bc -l)
+  echo "${percent%.*}"
+}
+
+function percent-remain() {
+  percent=$(echo "(100 / $1) * ($1 - $2)" | bc -l)
+  echo "${percent%.*}"
+}

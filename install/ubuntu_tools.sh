@@ -21,6 +21,7 @@ if [ "${OS_TYPE}" = "DESKTOP" ]; then
   #gsettings set org.gnome.desktop.background primary-color '#000000'
 
   apt_install gnome-tweaks
+  apt_install stacer
   #apt_install dconf-editor
   apt_install fonts-firacode
 
