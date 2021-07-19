@@ -22,6 +22,7 @@ alias hostinfo='hostnamectl'
 
 alias install='sudo apt install'
 alias sysd='sudo systemctl'
+alias list-services='sudo systemctl list-unit-files --type=service'
 alias reload='sudo systemctl reload'
 alias restart='sudo systemctl restart'
 alias status='sudo systemctl status'
