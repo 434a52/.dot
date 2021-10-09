@@ -79,8 +79,8 @@ function rtrim() {
 }
 
 function percent-used() {
-  if [[ $(("$1" * "$2")) -gt 0 ]]; then
-    percent=$(echo "100 / $1 * $2" | bc -l)
+  if [[ $(("${1/.*}" * "${2/.*}")) -gt 0 ]]; then
+    percent=$(echo "100 / ${1/.*} * ${2/.*}" | bc -l)
     percent=${percent%.*}
     echo "${percent:-0}"
   else
