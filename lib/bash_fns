@@ -60,7 +60,7 @@ function disk-info() {
   data=($(read-row "${disk_free}" 1))
   total=${data[1]}
   used=${data[2]}
-  echo "$(percent-used "$total%G" "$used")% of $total"
+  echo "$(percent-used "${total%G}" "${used%G}")% of $total"
 }
 
 function memory-info() {
