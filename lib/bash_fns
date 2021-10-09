@@ -29,10 +29,6 @@ function sd() {
 }
 
 function apt-update() {
-  sudo apt update
-}
-
-function apt-update() {
   if sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y; then
     if [ -f /var/run/reboot-required ]; then
       echo -e "\e[33m*** Reboot Required ***\e[0m"
