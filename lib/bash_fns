@@ -127,7 +127,7 @@ function home() {
   echo "    swap:  $(swap-info)"
   echo "   local:  ${LOCAL_IP}"
   echo "  public:  ${PUBLIC_IP}"
-  if [[ "$1" == "-update"  ]]; then
+  if [[ "$1" == "--update"  ]]; then
     echo " updates:  $(update-info)"
   fi
   echo ""
