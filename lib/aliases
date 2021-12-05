@@ -25,3 +25,5 @@ alias follow='tail -fn +1'
 alias create-uuid='uuidgen'
 
 alias git-ff='git pull --ff-only'
+
+alias prune-backups='find ~/backup -name "*.backup" -type f -mtime +30 -delete'
