@@ -42,8 +42,10 @@ function clone-all() {
 
 function pull-all() {
   for repo in */.git; do
+    output=$(cd "${repo}/.." && git pull --ff-only)
+    echo ""
     echo "$(dirname ${repo})"
-    (cd "${repo}/.." && git pull --ff-only)
+    echo "${output}"
   done
 }
 
