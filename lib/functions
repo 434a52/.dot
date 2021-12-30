@@ -32,13 +32,17 @@ function mkcd() {
 function clone-all() {
   repo_list="${HOME}/code/repo-list"
   while read -r repo; do
-    echo "${repo}"
+    name=$(basename "${repo}")
+    if [[ ! -d "${HOME}/code/${name}" ]]; then
+      echo "Cloning ${name}"
+      git clone https://github.com/${repo}.git ${HOME}/code/${name}
+    fi
   done < "${repo_list}"
 }
 
 function pull-all() {
   for repo in */.git; do
-    echo "${repo}"
+    echo "$(dirname ${repo})"
     (cd "${repo}/.." && git pull --ff-only)
   done
 }
