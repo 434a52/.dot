@@ -5,6 +5,8 @@ alias lf='ls -pvlAhgF --color=auto --group-directories-first | grep -v /'
 alias ld='\ls --color=auto -vhld -- */'
 alias cll='clear && ls -vlAhgF --color=auto --group-directories-first'
 
+alias clf='truncate -s 0'
+
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
